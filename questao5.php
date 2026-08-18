@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*05. Faça um script para o cálculo de uma folha de pagamento. O script deve  ter o 
 valor da sua hora e a quantidade de horas trabalhadas no mês. Considere: FGTS 
 (11% do bruto, NÃO descontado), Sindicato (3% do bruto, descontado), e o IR 
@@ -11,16 +11,33 @@ e. Imprima o resumo demonstrativo listando Bruto, Descontos
 detalhados e o Salário Líquido.*/
 
 
+$valorHora = 50;
+$horasTrabalhadas = 160;
+
+$bruto = $valorHora * $horasTrabalhadas;
+
+if ($bruto <= 900) {
+    $percentualIr = 0;
+} elseif ($bruto <= 1500) {
+    $percentualIr = 5;
+} elseif ($bruto <= 2500) {
+    $percentualIr = 10;
+} else {
+    $percentualIr = 20;
+}
+
+$ir = $bruto * ($percentualIr / 100);
+$sindicato = $bruto * 0.03;
+$fgts = $bruto * 0.11;
+
+$totalDescontos = $ir + $sindicato;
+$salarioLiquido = $bruto - $totalDescontos;
+
+echo "Salário Bruto: R$ $bruto\n";
+echo "IR ($percentualIr%): R$ $ir\n";
+echo "Sindicato (3%): R$ $sindicato\n";
+echo "FGTS: R$ $fgts\n";
+echo "Total de descontos: R$ $totalDescontos\n";
+echo "Salário Líquido: R$ $salarioLiquido\n";
 
 
-
-
-
-
-
-
-
-
-
-
-?>
